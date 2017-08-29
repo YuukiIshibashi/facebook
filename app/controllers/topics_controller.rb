@@ -9,28 +9,29 @@ class TopicsController < ApplicationController
     else
       @topic = Topic.new
 			@topic.pictures.build
-    end
+		end
   end
 
 	def mypage
 		@user = current_user
+		@users = User.all
+		@conversations = Conversation.all
 	end
 
-	def new
-  end
 
   def create
 		@topic = Topic.new(topics_params)
 
     @topic.user_id = current_user.id
     if params[:back]
-      render  :new
+      render  :index
     else
       @topic.save
       if @topic.save
-       redirect_to topics_path
+       redirect_to topics_path, notice: "投稿しました！"
       else
-       render :new
+			 @topics = Topic.all
+       render  :index
       end
     end
 
@@ -63,7 +64,7 @@ class TopicsController < ApplicationController
 
 	private
    def topics_params
-     params.require(:topic).permit(:title, :content, pictures_attributes: [:id, :image])
+     params.require(:topic).permit(:content, pictures_attributes: [:id, :image])
    end
 
    def set_topic

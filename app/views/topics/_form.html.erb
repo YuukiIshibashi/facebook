@@ -1,3 +1,5 @@
+<p id="notice"><%= notice %></p>
+
 <%= form_with model: @topic, local: true do |f| %>
 	<% if @topic.errors.any? %>
 		<div id="error_explanation">
@@ -9,20 +11,11 @@
 			</ul>
 		</div>
 	<% end %>
-
-  <%= f.label :タイトル %>
-  <%= f.text_field :title, class: 'form-control' %>
+  <%= f.text_area :content, class: 'form-control', placeholder: "なにしてる？" %>
   <br>
-  <%= f.label :本文 %>
-  <%= f.text_area :content, class: 'form-control' %>
-  <br>
-
-	<%= f.fields_for :pictures do |a| %>
-		  <%= a.file_field :image %>
-			<%= a.hidden_field :image_cache %>
-		<% end %>
-
+  <div class="file_area">
+		<%= render partial: 'pictures/form', locals: { f: f } %>
+		<%= link_to "追加", new_picture_path, remote: true %>
   <%= f.submit '投稿', class: 'btn btn-primary btn-block' %>
  <% end %>
-
-<%= link_to "Topic一覧画面にもどる" , topics_path %>
+ </div>

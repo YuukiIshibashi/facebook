@@ -2,8 +2,8 @@
 <html>
 <head>
   <title>Facebook</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -27,7 +27,6 @@
 							<li class="interval"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
 							<li class="interval"><%= link_to '投稿する', new_topic_path %></li>
 							<li class="interval"><%= link_to 'ユーザー一覧', users_path %></li>
-							<li><%= link_to "メッセージ", conversations_path%></li>
 						<% else %>
 							<li class="interval"><%= link_to 'ログイン' , new_user_session_path %></li>
 							<li class="interval"><%= link_to '新規登録' , new_user_registration_path %></li>

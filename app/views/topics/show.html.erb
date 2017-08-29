@@ -1,31 +1,32 @@
-<p class="topic_title"><%= @topic.title %></p>
-<p class="topic_text"><%= @topic.content %></p>
-
-<% @topic.pictures.each do |picture| %>
- <figure class="picture_area">
-	<%= image_tag (picture.image.url) %>
-</figure>
-<% end %>
-
-	<% if @topic.user == current_user %>
-		<ul class="icon cf">
-			<li><%=link_to '削除', topic_path(@topic.id), class: "fa fa-trash-o fa-lg", method: :delete%></li>
-			<li><%=link_to '編集', edit_topic_path(@topic.id), class: "fa fa-edit fa-lg"%></li>
-		<ul>
-	<% end %>
-
-<p>コメント一覧</p>
-<ul id="comments_area">
-	<% @comments.each do |comment| %>
-		<% unless comment.id.nil? %>
-			<li id="li_<%= comment.id %>">
-					<%= render partial: 'comments/show', locals: { comment: comment, topic: @topic } %>
-			</li>
+<div class="container">
+	<div class="inner">
+		<p class="topic_text"><%= @topic.content %></p>
+		<% @topic.pictures.each do |picture| %>
+			<figure class="picture_area">
+				<%= image_tag (picture.try(:image)) %>
+			</figure>
 		<% end %>
-	<% end %>
-</ul>
-<div id="form_area">
-	<%= render partial: 'comments/form', locals: { comment: @comment, topic: @topic } %>
-</div>
 
-<%= link_to '戻る', topics_path %>
+		<% if @topic.user == current_user %>
+			<ul class="icon cf">
+				<li><%=link_to '削除', topic_path(@topic.id), class: "fa fa-trash-o fa-lg", method: :delete%></li>
+				<li><%=link_to '編集', edit_topic_path(@topic.id), class: "fa fa-edit fa-lg"%></li>
+			<ul>
+		<% end %>
+
+		<p>コメント一覧</p>
+		<ul id="comments_area">
+			<% @comments.each do |comment| %>
+				<% unless comment.id.nil? %>
+					<li id="li_<%= comment.id %>">
+							<%= render partial: 'comments/show', locals: { comment: comment, topic: @topic } %>
+					</li>
+				<% end %>
+			<% end %>
+		</ul>
+		<div id="form_area">
+			<%= render partial: 'comments/form', locals: { comment: @comment, topic: @topic } %>
+		</div>
+		<%= link_to '戻る', topics_path %>
+	</div>
+</div>
