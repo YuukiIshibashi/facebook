@@ -37,6 +37,22 @@ module ActionView
       image_tag(img_url, alt: user.name)
     end
 
+		def messageType(user)
+    if user == current_user
+      "messageUser"
+    else
+      "messageOther"
+    end
+  end
+
+  def messageSmallType(user)
+    if user == current_user
+      "right"
+    else
+      "left"
+    end
+  end
+
     class FormBuilder
       def error_messages!(options = {})
         @template.error_messages!(@object_name, options.merge(object: @object))

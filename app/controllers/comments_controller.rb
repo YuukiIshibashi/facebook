@@ -4,6 +4,9 @@ class CommentsController < ApplicationController
   def index
   end
 
+	def show
+  end
+
 	def create
 	 @comment = current_user.comments.build(comment_params)
 	 @topic = @comment.topic

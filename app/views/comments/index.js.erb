@@ -1,3 +1,3 @@
 $("#comments_area").append(
-  '<li id="li_<%= @comment.id %>"><p class="left"><%= @comment.user.name %>さんがコメントしました。</p><p class="left"><%= @comment.content %></p><% if current_user.id == @comment.user_id %><p class="right"><a class="edit fa fa-pencil-square-o fa-lg" id="<%= @comment.id %>">編集</a><%= link_to '削除', comment_path(@comment), class: "fa fa-trash-o fa-lg", method: :delete, remote: true, data: { confirm: '本当に削除していいですか？' } %></p><% end %></li>')
+  '<ul class="cf"><li class="image_area"><%= profile_img(@comment.user) %></li><li class="name_area"><%= @comment.user.name %>さんがコメントしました。</li></ul><p class="left comment_content"><%= @comment.content %></p><% if current_user.id == @comment.user_id %><a class="edit fa fa-pencil-square-o fa-lg" id="<%= @comment.id %>"></a><%= link_to '', comment_path(@comment), class: "fa fa-trash-o fa-lg", method: :delete, remote: true, data: { confirm: '本当に削除していいですか？' } %></p><% end %>')
 $(':text').val('')

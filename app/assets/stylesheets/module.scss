@@ -22,3 +22,44 @@
 .icon li{
 	display: inline-block;
 }
+.messageImg{
+	margin: 0 5%;
+  width: 10%;
+	img{
+    border-radius: 50%;
+  }
+}
+.messageBody{
+  max-width: 70%;
+  // background-color: inherit;
+  padding: 2%;
+  border-radius: 1rem;
+  text-align: left;
+}
+.messageUser{
+  float: right;
+  background-color: #fff;
+}
+
+.messageOther{
+  float: left;
+  background-color: #FADCE9;
+}
+
+.messageImg{
+	margin: 0 5%;
+  width: 10%;
+	background-color: transparent;
+	img{
+    border-radius: 50%;
+  }
+}
+.comment_content{
+	background-color: #fff;
+	padding: 1vw;
+	border-radius: 1vw;
+	width: 100%;
+}
+#comments_area > li{
+	width: 100%;
+}

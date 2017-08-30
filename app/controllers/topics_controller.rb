@@ -4,6 +4,7 @@ class TopicsController < ApplicationController
 
   def index
 		@topics = Topic.all
+		@topics =@topics.order("created_at DESC")
 		if params[:back]
       @topic = Topic.new(topics_params)
     else

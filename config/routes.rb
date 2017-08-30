@@ -10,8 +10,7 @@ Rails.application.routes.draw do
 		collection do
       get :mypage
     end
-    resources :comments, only: [:new, :index, :create,:edit, :update, :destroy] do
-    end
+    resources :comments
   end
 
 	resources :pictures, only: [:new, :index, :create,:edit, :update, :destroy]
