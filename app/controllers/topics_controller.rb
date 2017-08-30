@@ -1,5 +1,5 @@
 class TopicsController < ApplicationController
-	before_action :authenticate_user!
+	before_action :authenticate_user!, only: [:edit, :update, :destroy]
   before_action :set_topic, only: [:edit, :update, :destroy, :show]
 
   def index
@@ -16,6 +16,7 @@ class TopicsController < ApplicationController
 		@user = current_user
 		@users = User.all
 		@conversations = Conversation.all
+		@topics = Topic.where(user_id: @user)
 	end
 
 

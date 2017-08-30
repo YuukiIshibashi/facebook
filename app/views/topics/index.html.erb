@@ -1,5 +1,4 @@
-<div class="container">
-	<div class="inner">
+<div class="inner">
 		<% if user_signed_in?%>
 			<div class="form_area">
 				<%= render 'form' %>
@@ -23,8 +22,8 @@
 							<% end %>
 						  <% if topic.user == current_user %>
 							  <ul class="icon cf">
-							    <li><%=link_to '削除', topic_path(topic.id), class: "fa fa-trash-o fa-lg", method: :delete%></li>
-							    <li><%=link_to '編集', edit_topic_path(topic.id), class: "fa fa-edit fa-lg"%></li>
+							    <li><%=link_to '', topic_path(topic.id), class: "fa fa-trash-o fa-lg", method: :delete%></li>
+							    <li><%=link_to '', edit_topic_path(topic.id), class: "fa fa-edit fa-lg"%></li>
 							  <ul>
 						  <% end %>
 					  </figure>
@@ -33,4 +32,3 @@
 			<% end %>
 		</div>
 	</div>
-</div>

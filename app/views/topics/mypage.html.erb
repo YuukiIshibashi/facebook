@@ -1,20 +1,51 @@
-<ul class="cf">
-    <li class="image_area2"><%= profile_img(current_user) %></li>
-    <li  class="name_area2"><%= current_user.name %>さん</li>
-		<%= current_user.id %>
+<div class="row">
+	<div class="col-md-2 col-sm-3 col-xs-12">
+		<p><%= current_user.name %>さん</p>
+	  <div class="mypage_img"><%= profile_img(current_user) %></div>
+		<h2 class="section_title">メッセージ一覧</h2>
+    <% @conversations.each do |conversation| %>
 
-		<table class="table table-hover">
-	    <thead>
-	      <h2>メッセージ一覧</h2>
-	    </thead>
-	    <tbody>
-	      <% @conversations.each do |conversation| %>
-	        <td>
-	          <% if conversation.target_user(current_user).present? %>
-	            <%= link_to conversation.target_user(current_user).name, conversation_messages_path(conversation)%>
-	          <% end %>
-	        </td>
-	      <% end %>
-	    </tbody>
-	  </table>
-  </ul>
+        <% if conversation.target_user(current_user).present? %>
+					<ul>
+						<%= link_to conversation_messages_path(conversation) do %>
+						<li class="image_area">
+						<%= profile_img(conversation.target_user(current_user) )%>
+						</li>
+						<li  class="name_area">
+            <%= conversation.target_user(current_user).name %>
+						</li>
+					</ul>
+				<% end %>
+      <% end %>
+    <% end %>
+	</div>
+	<div class="col-md-10 col-sm-9 col-xs-12">
+		<h2 class="section_title">投稿</h2>
+		<div class="topic_area">
+			<% @topics.each do |topic| %>
+				<div class="topic_contents">
+					<ul class="cf">
+						<li class="image_area"><%= image_tag(topic.user.avatar) %></li>
+						<li  class="name_area"><%= topic.user.name %>さん</li>
+					</ul>
+					<br>
+					<%= link_to topic_path(topic.id) do%>
+						<p class="topic_text"><%= topic.content %></p>
+						<figure class="topic_area">
+							<% pictures =  topic.pictures%>
+							<% picture =  topic.pictures.first%>
+							<% if picture.image.present? %>
+								<%= image_tag (picture.image.url) %>
+							<% end %>
+							<% if topic.user == current_user %>
+								<ul class="icon cf">
+									<li><%=link_to '', topic_path(topic.id), class: "fa fa-trash-o fa-lg", method: :delete%></li>
+									<li><%=link_to '', edit_topic_path(topic.id), class: "fa fa-edit fa-lg"%></li>
+								<ul>
+							<% end %>
+						</figure>
+					<% end %>
+				</div>
+			<% end %>
+		</div>
+</div>

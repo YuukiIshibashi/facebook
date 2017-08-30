@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>Facebook</title>
+	<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
@@ -25,7 +26,6 @@
 							<li class="interval"><%= link_to 'マイページ', mypage_topics_path(current_user.id) %></li>
 							<li class="interval"><%= link_to '登録内容変更', edit_user_registration_path(current_user.id) %></li>
 							<li class="interval"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
-							<li class="interval"><%= link_to '投稿する', new_topic_path %></li>
 							<li class="interval"><%= link_to 'ユーザー一覧', users_path %></li>
 						<% else %>
 							<li class="interval"><%= link_to 'ログイン' , new_user_session_path %></li>
@@ -44,8 +44,12 @@
 		<%= alert %>
 	<% end %>
 
-<%= yield %>
+	<div class="container">
 
+
+		 	<%= yield %>
+
+	</div>
 
 </body>
 </html>
