@@ -18,7 +18,7 @@
 							<% pictures =  topic.pictures%>
 							<% picture =  topic.pictures.first%>
 							<% if picture.present? %>
-								<%= image_tag (picture.image.url) %>
+								<%#= image_tag (picture.image.url) %>
 							<% end %>
 						  <% if topic.user == current_user %>
 							  <ul class="icon cf">
