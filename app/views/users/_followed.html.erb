@@ -1,11 +1,11 @@
 <% if user.followed_users.present? %>
  <% user.followed_users.each do |user| %>
-   <div class="row">
+   <ul class="cf">
       <%= link_to user_path(user) do %>
-      <p class="col-sm-2"><%= profile_img(user) %></p>
-      <p class="col-sm-10 left"><%= user.name %></p>
+      <li class="image_area"><%= profile_img(user) %></li>
+      <li  class="name_area"><%= user.name %></li>
       <% end %>
-  </div>
+  </ul>
 <% end %>
 <% else %>
 <p>いません</p>

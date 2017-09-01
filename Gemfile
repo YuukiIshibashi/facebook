@@ -41,6 +41,8 @@ gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 gem 'fog'
 gem 'unicorn'
+gem 'faker'
+gem 'forgery'
 gem 'therubyracer', platforms: :ruby
 
 group :development, :test do

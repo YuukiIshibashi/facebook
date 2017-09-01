@@ -18,6 +18,10 @@
 				<% end %>
       <% end %>
     <% end %>
+    <h2 class="section_title">フォローしている人</h2>
+    <%= render 'users/followed', user: @user %>
+		<h2 class="section_title">フォロワー</h2>
+    <%= render 'users/follower', user: @user %>
 	</div>
 	<div class="col-md-10 col-sm-9 col-xs-12">
 		<h2 class="section_title">投稿</h2>

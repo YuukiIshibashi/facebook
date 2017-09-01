@@ -1,12 +1,13 @@
 <div class="container">
   <h2> <%= @user.name %>さん</h2>
+	 <div class="my_img"><%= profile_img(@user) %></div>
     <div class="row">
       <div class="col-md-6  col-xs-12">
-      <p class="sign">フォローしている人</p>
+      <h2 class="section_title">フォローしている人</h2>
         <%= render 'followed', user: @user %>
       </div>
       <div class="col-md-6  col-xs-12">
-      <p class="sign">フォロワー</p>
+      <h2 class="section_title">フォロワー</h2>
         <%= render 'follower', user: @user %>
       </div>
    </div>

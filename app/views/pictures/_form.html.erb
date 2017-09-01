@@ -1,7 +1,6 @@
 <%= f.fields_for :pictures do |a| %>
   <div class="input-image">
-    <%= a.file_field :image, class: 0 %>  	
-  </div>
-
+    <%= a.file_field :image, class: 0 %>
 		<%= a.hidden_field :image_cache %>
+		</div>
 <% end %>

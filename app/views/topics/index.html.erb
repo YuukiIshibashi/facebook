@@ -8,7 +8,7 @@
 			<% @topics.each do |topic| %>
 				<div class="topic_contents">
 				  <ul class="cf">
-				    <li class="image_area"><%= image_tag(topic.user.avatar) %></li>
+				    <li class="image_area"><%= profile_img(topic.user) %></li>
 				    <li class="name_area"><%= topic.user.name %>さん</li>
 				  </ul>
 				  <br>
@@ -17,7 +17,7 @@
 					  <figure class="topic_area">
 							<% pictures =  topic.pictures%>
 							<% picture =  topic.pictures.first%>
-							<% if picture.image.present? %>
+							<% if picture.present? %>
 								<%= image_tag (picture.image.url) %>
 							<% end %>
 						  <% if topic.user == current_user %>
